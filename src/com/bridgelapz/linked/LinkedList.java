@@ -2,9 +2,9 @@ package com.bridgelapz.linked;
 
 public class LinkedList {
 
+
     public Node head;
     public Node tail;
-
     static class Node {
         int data;
         Node next;
@@ -16,59 +16,50 @@ public class LinkedList {
     }
 
     // Adding new Node with values
-    public void add(int datas) {
+    public void add(int datas){
         Node newNode = new Node(datas);
-        if (head == null) {
+        if(head == null){
             head = newNode;
             tail = newNode;
-        } else {
+        }
+        else {
             newNode.next = head;
             head = newNode;
         }
     }
 
-    // Display the Node with value
-    public void display() {
-        Node current = head;
+    // Search the Element
+    public int search(int element) {
         if (head == null) {
-            System.out.println("List is empty");
+            return -1;
         }
-        while (current != null) {
-            System.out.println(current.data + " ");
-            current = current.next;
-        }
-    }
+        int index = 0;
+        Node temp = head;
 
-    // Deleting the LastNode with Value
-    public void pop() {
-
-        //Checks if the list is empty
-        if (head == null) {
-            System.out.println("List is empty");
-            return;
-        } else {
-            if (head != tail) {
-                Node current = head;
-                while (current.next != tail) {
-                    current = current.next;
-                }
-                tail = current;
-                tail.next = null;
-            } else {
-                head = tail = null;
+        while (temp != null) {
+            if (temp.data == element) {
+                return index;
             }
+            index++;
+            temp = temp.next;
         }
+        return -1;
     }
 
     public static void main(String[] args) {
-       LinkedList list = new LinkedList();
+        LinkedList list = new LinkedList();
 
-        list.add(70);
-        list.add(30);
         list.add(56);
-        list.display();
-        list.pop();
-        list.display();
+        list.add(30);
+        list.add(70);
+
+        int Searchelement = 20;
+        int ans = list.search(Searchelement);
+        if (ans == -1) {
+            System.out.println("Element not found in the Linked List");
+        }
+        else
+            System.out.println("Element found in the Linked List at "+ans);
     }
 
 	}
