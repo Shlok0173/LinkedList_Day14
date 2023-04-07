@@ -5,6 +5,7 @@ public class LinkedList {
 
     public Node head;
     public Node tail;
+
     static class Node {
         int data;
         Node next;
@@ -16,34 +17,43 @@ public class LinkedList {
     }
 
     // Adding new Node with values
-    public void add(int datas){
+    public void add(int datas) {
         Node newNode = new Node(datas);
-        if(head == null){
+        if (head == null) {
             head = newNode;
             tail = newNode;
-        }
-        else {
-            newNode.next = head;
-            head = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
         }
     }
 
-    // Search the Element
-    public int search(int element) {
-        if (head == null) {
-            return -1;
-        }
-        int index = 0;
+    // Insert the newNode With given index
+    public void insert(int c) {
+        Node newNode = new Node(c);
         Node temp = head;
-
-        while (temp != null) {
-            if (temp.data == element) {
-                return index;
+        boolean b = true;
+        while (b) {
+            if (temp.data == 30) {
+                newNode.next = temp.next;
+                temp.next = newNode;
+                break;
             }
-            index++;
             temp = temp.next;
+            b = true;
         }
-        return -1;
+    }
+
+    // Display the allNodes with value
+    public void display() {
+        Node current = head;
+        if (head == null) {
+            System.out.println("List is empty");
+        }
+        while (current != null) {
+            System.out.println(current.data);
+            current = current.next;
+        }
     }
 
     public static void main(String[] args) {
@@ -52,14 +62,9 @@ public class LinkedList {
         list.add(56);
         list.add(30);
         list.add(70);
+        list.insert(40);
 
-        int Searchelement = 20;
-        int ans = list.search(Searchelement);
-        if (ans == -1) {
-            System.out.println("Element not found in the Linked List");
-        }
-        else
-            System.out.println("Element found in the Linked List at "+ans);
+        list.display();
     }
 
 	}
