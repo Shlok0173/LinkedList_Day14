@@ -1,7 +1,6 @@
 package com.bridgelapz.linked;
 
 public class LinkedList {
-	
 
 	    public Node head;
 	    public Node tail;
@@ -40,7 +39,7 @@ public class LinkedList {
 	        }
 	    }
 	    public static void main(String[] args) {
-	    LinkedList  list = new LinkedList();
+	        LinkedList list = new LinkedList();
 
 	        list.add(70);
 	        list.add(30);
@@ -49,4 +48,5 @@ public class LinkedList {
 
 	    }
 	}
+	
 
