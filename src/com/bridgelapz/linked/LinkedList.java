@@ -1,8 +1,10 @@
 package com.bridgelapz.linked;
+
 public class LinkedList {
 	
-	
-      Node head;
+
+	    public Node head;
+	    public Node tail;
 	    static class Node {
 	        int data;
 	        Node next;
@@ -12,20 +14,39 @@ public class LinkedList {
 	            next = null;
 	        }
 	    }
-	    public static void main(String[] args) {
-	        LinkedList linkedList = new LinkedList();
 
-	        linkedList.head = new Node(56);
-	        Node second = new Node(30);
-	        Node Third = new Node(70);
-
-	        linkedList.head.next = second;
-	        second.next = Third;
-
-	        // Print the Data with Values
-	        while (linkedList.head != null) {
-	            System.out.println(linkedList.head.data);
-	            linkedList.head = linkedList.head.next;
+	    // Adding new Node with data
+	    public void add(int datas){
+	        Node newNode = new Node(datas);
+	        if(head == null){
+	            head = newNode;
+	            tail = newNode;
+	        }
+	        else {
+	            newNode.next = head;
+	            head = newNode;
 	        }
 	    }
-}
+
+	    // Display the Node with value
+	    public void display() {
+	        Node current = head;
+	        if(head == null) {
+	            System.out.println("List is empty");
+	        }
+	        while (current != null) {
+	            System.out.println(current.data +" ");
+	            current = current.next;
+	        }
+	    }
+	    public static void main(String[] args) {
+	    LinkedList  list = new LinkedList();
+
+	        list.add(70);
+	        list.add(30);
+	        list.add(56);
+	        list.display();
+
+	    }
+	}
+
